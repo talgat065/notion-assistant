@@ -26,5 +26,11 @@ test:
 build:
 	go build ${GOARGS} -ldflags "${LDFLAGS}" -o ${BUILD_DIR} ./cmd/web
 
+build/dev:
+	sudo docker build -t notionassistant .
+
 serve:
 	${BUILD_DIR}
+
+serve/dev:
+	sudo docker run --rm -it -p 9000:9000 notionassistant
