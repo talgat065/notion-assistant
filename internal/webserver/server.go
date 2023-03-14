@@ -1,18 +1,23 @@
 package webserver
 
 import (
+	"log"
 	"net/http"
 )
+
+func NewServer() Server {
+	return Server{":9000"}
+}
 
 type Server struct {
 	Port string
 }
 
-func (s *Server) initializeRoutes() {
-	http.HandleFunc("/create", MakeDefaultHandler())
+func (s Server) Run() {
+	s.initializeRoutes()
+	log.Fatal(http.ListenAndServe(s.Port, nil))
 }
 
-func (s *Server) Run() error {
-	s.initializeRoutes()
-	return http.ListenAndServe("127.0.0.1"+s.Port, nil)
+func (s Server) initializeRoutes() {
+	http.HandleFunc("/get-updates", MakeGetUpdatesHandler())
 }
