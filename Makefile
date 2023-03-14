@@ -34,5 +34,4 @@ serve:
 	${BUILD_DIR}
 
 serve/dev:
-	sudo docker stop notionassistant \
-	sudo docker run --rm -d -it -t notionassistant --name notionassistant -p 9000:9000 notionassistant
+	(sudo docker stop notionassistant | true) && sudo docker run --rm -d -it --name notionassistant -p 9000:9000 notionassistant
