@@ -34,4 +34,4 @@ serve:
 	${BUILD_DIR}
 
 serve/dev:
-	sudo docker run --rm -d -it -p 9000:9000 notionassistant
+	sudo docker run --rm -d -it -p 9000:9000 notionassistant -t notionassistant -n notionassistant
